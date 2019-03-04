@@ -20,7 +20,7 @@ def repeater(key):
 
 def control(main,defin):
     if main == defin:
-        print("Nice")
+        print("Nice result matches expexted result")
 
 control(expected_result,codecs.encode(repeater(key),'hex').decode())
 

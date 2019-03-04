@@ -12,7 +12,6 @@ def xorchecker(string):
     while start <= end:
         byte_string1 = bytearray.fromhex(string)
         byte_result = bytearray(len(byte_string1))
-
         for i in range(len(byte_string1)):
             byte_result[i] = byte_string1[i] ^ start
         if (scorecounter(codecs.decode(byte_result.hex(),'hex').decode())) >0.8:

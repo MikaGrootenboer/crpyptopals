@@ -1,5 +1,5 @@
 import codecs,base64, math
-from challenge3 import xorchecker
+from challenge3 import xorchecker,scorecounter
 
 encryp_base64  = open("challenge6.txt").read()
 encryp_bytes = base64.b64decode(encryp_base64)
@@ -31,7 +31,7 @@ def cihper_xor(firstkey,secondkey,message):
         #print("hamm dist:",hamming_distance)
         #print("-------------------------------------------------------------------")
 
-    # step 4
+    #step 4
     key_value_list = sorted(hamming_key.items(),key=lambda kv : kv[1])[:3]
     keys = [k[0] for k in key_value_list]
     #print(key_value_list)
@@ -44,7 +44,7 @@ def cihper_xor(firstkey,secondkey,message):
         for i in range(math.ceil(len(encryp_bytes)/key)):
             new_block_list.append(encryp_bytes[block_position:(block_position+key)])
             block_position = block_position +key
-        print(new_block_list)
+        #print(new_block_list)
 
         #step 6
         transpose_blocks = []
@@ -56,10 +56,13 @@ def cihper_xor(firstkey,secondkey,message):
                 except:
                     continue
             transpose_blocks.append(temp_block_list)
-        print(transpose_blocks)
+        #print(transpose_blocks)
 
         #step 7
-        xorchecker(transpose_blocks[0])
+        for x in range(i+1):
+            xorchecker(transpose_blocks[x])
+        print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+
 
 
 
